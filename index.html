@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Simple Component</title>
 	</head>
 	<body>
 		<div id="app"></div>
@@ -16,15 +16,15 @@
 					this.setup();
 					this.render();
 				}
-				setup() {}
 				template() {
 					return '';
 				}
+				setup() {}
+				setEvent() {}
 				render() {
 					this.$target.innerHTML = this.template();
 					this.setEvent();
 				}
-				setEvent() {}
 				setState(newState) {
 					this.state = { ...this.state, ...newState };
 					this.render();
@@ -40,11 +40,11 @@
                         <ul>
                             ${items.map((item) => `<li>${item}</li>`).join('')}
                         </ul>
-                        <button>추가</button>
+                        <button id='append'>추가하기</button>
                     `;
 				}
 				setEvent() {
-					this.$target.querySelector('button').addEventListener('click', () => {
+					document.querySelector('#append').addEventListener('click', () => {
 						const { items } = this.state;
 						this.setState({ items: [...items, `item${items.length + 1}`] });
 					});
